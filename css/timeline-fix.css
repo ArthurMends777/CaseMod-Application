@@ -1,0 +1,178 @@
+/* Estilos adicionais para corrigir a linha do tempo */
+.timeline-track {
+    position: relative;
+    height: auto;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: visible;
+    padding: 2rem 0;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--dourado-envelhecido);
+    z-index: 1;
+}
+
+.timeline-point {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    z-index: 2;
+}
+
+.point-dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--dourado-envelhecido);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3;
+}
+
+.point-label {
+    position: absolute;
+    top: -30px;
+    font-weight: bold;
+    color: var(--marrom-envelhecido);
+    text-align: center;
+    width: 100%;
+    max-width: 150px;
+}
+
+.point-content {
+    position: absolute;
+    top: 30px;
+    width: 300px;
+    background-color: var(--branco-envelhecido);
+    border: 2px solid var(--dourado-envelhecido);
+    border-radius: var(--borda-radius);
+    padding: 1rem;
+    box-shadow: var(--sombra-padrao);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 10;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.timeline-point:nth-child(odd) .point-content {
+    left: calc(50% + 30px);
+}
+
+.timeline-point:nth-child(even) .point-content {
+    right: calc(50% + 30px);
+}
+
+.timeline-point.active .point-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Melhorar a visibilidade dos pontos ativos */
+.timeline-point.active .point-dot {
+    background-color: var(--vermelho-oxidado);
+    transform: scale(1.5);
+    box-shadow: 0 0 0 5px rgba(218, 165, 32, 0.3);
+}
+
+/* Garantir que as imagens nos cards sejam responsivas */
+.point-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+/* Adicionar indicadores de navegação mais visíveis */
+.timeline-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding: 0 5%;
+    width: 100%;
+}
+
+.timeline-prev,
+.timeline-next {
+    background-color: var(--marrom-envelhecido);
+    color: var(--branco-envelhecido);
+    border: 2px solid var(--dourado-envelhecido);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-prev:hover,
+.timeline-next:hover {
+    background-color: var(--dourado-envelhecido);
+    transform: scale(1.1);
+}
+
+/* Correção para o menu mobile */
+@media (max-width: 768px) {
+    .header {
+        background-color: rgba(139, 69, 19, 0.95) !important;
+    }
+    
+    .nav-list {
+        background-color: rgba(139, 69, 19, 0.95);
+        border: 2px solid var(--dourado-envelhecido);
+    }
+    
+    .nav-list a {
+        color: var(--branco-envelhecido) !important;
+    }
+    
+    .logo h1 {
+        color: var(--branco-envelhecido) !important;
+    }
+    
+    .menu-toggle span {
+        background-color: var(--branco-envelhecido);
+    }
+    
+    /* Ajustes para a linha do tempo em mobile */
+    .timeline-point:nth-child(odd) .point-content,
+    .timeline-point:nth-child(even) .point-content {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        width: 280px;
+    }
+    
+    .point-label {
+        font-size: 0.8rem;
+        max-width: 100px;
+    }
+    
+    .point-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .point-content p {
+        font-size: 0.9rem;
+    }
+}
